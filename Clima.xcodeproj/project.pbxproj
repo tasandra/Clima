@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A82113FC2974D7F100949567 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82113FB2974D7F100949567 /* MainScreen.swift */; };
+		A855006A2974EA6900289250 /* BaseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85500692974EA6900289250 /* BaseScreen.swift */; };
+		A855006D2974F03C00289250 /* BaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A855006C2974F03C00289250 /* BaseTest.swift */; };
+		A855007029751EDD00289250 /* SearchProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A855006F29751EDD00289250 /* SearchProtocol.swift */; };
 		A88C452427840B2400B3F3BC /* ClimaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88C452327840B2400B3F3BC /* ClimaUITests.swift */; };
 		A8C06A3A26425FD9006C19D3 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C06A3926425FD9006C19D3 /* WeatherManager.swift */; };
 		A8C06A3F2643A45D006C19D3 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C06A3E2643A45D006C19D3 /* WeatherData.swift */; };
@@ -31,6 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A82113FB2974D7F100949567 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		A85500692974EA6900289250 /* BaseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScreen.swift; sourceTree = "<group>"; };
+		A855006C2974F03C00289250 /* BaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTest.swift; sourceTree = "<group>"; };
+		A855006F29751EDD00289250 /* SearchProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProtocol.swift; sourceTree = "<group>"; };
 		A85E5C1F2657820D003D0368 /* Clima.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clima.entitlements; sourceTree = "<group>"; };
 		A88C452127840B2400B3F3BC /* ClimaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClimaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A88C452327840B2400B3F3BC /* ClimaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimaUITests.swift; sourceTree = "<group>"; };
@@ -66,10 +74,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A88C452227840B2400B3F3BC /* ClimaUITests */ = {
+		A82113FA2974D7CB00949567 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				A82113FB2974D7F100949567 /* MainScreen.swift */,
+				A85500692974EA6900289250 /* BaseScreen.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		A855006B2974F01E00289250 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				A88C452327840B2400B3F3BC /* ClimaUITests.swift */,
+				A855006C2974F03C00289250 /* BaseTest.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		A855006E29751EA700289250 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A855006F29751EDD00289250 /* SearchProtocol.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A88C452227840B2400B3F3BC /* ClimaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A855006E29751EA700289250 /* Utils */,
+				A855006B2974F01E00289250 /* Tests */,
+				A82113FA2974D7CB00949567 /* Screens */,
 			);
 			path = ClimaUITests;
 			sourceTree = "<group>";
@@ -237,7 +273,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A855006D2974F03C00289250 /* BaseTest.swift in Sources */,
+				A855007029751EDD00289250 /* SearchProtocol.swift in Sources */,
+				A82113FC2974D7F100949567 /* MainScreen.swift in Sources */,
 				A88C452427840B2400B3F3BC /* ClimaUITests.swift in Sources */,
+				A855006A2974EA6900289250 /* BaseScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
