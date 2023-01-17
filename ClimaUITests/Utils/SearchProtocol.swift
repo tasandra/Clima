@@ -16,12 +16,16 @@ protocol SearchProtocol {
 
 extension SearchProtocol {
     @discardableResult
-    func search(text: String) -> MainScreen{
+    func search(text: String) -> MainScreen {
         let searchField = MainScreen.app.textFields["searchField"]
-        searchField.tap()
-        searchField.typeText(text)
         let searchButton = MainScreen.app.buttons["search"]
-        searchButton.tap()
+        if searchField.waitForExistence(timeout: 2) && searchButton.waitForExistence(timeout: 2){
+            searchField.tap()
+            searchField.typeText(text)
+            searchButton.tap()
+        }else{
+            print("Search field or Search button is not visible")
+        }
         return MainScreen.init()
     }
 }

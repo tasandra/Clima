@@ -10,28 +10,18 @@ import XCTest
 
 
 class MainScreen: BaseScreen, SearchProtocol{
-    private let cityText: XCUIElement = app/*@START_MENU_TOKEN@*/.staticTexts["city"]/*[[".staticTexts[\"Cupertino\"]",".staticTexts[\"city\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-    private let locationButton: XCUIElement = app.buttons["location"]
+    private lazy var cityText: XCUIElement = BaseScreen.app.staticTexts["city"]
+    private lazy var locationButton: XCUIElement = BaseScreen.app.buttons["location"]
+    private lazy var searchField: XCUIElement = BaseScreen.app.textFields["searchField"]
+    
     
     override init() {
         super.init()
+        handleLocationAlertIfNeeded()
         visible()
     }
     
-//    required init() {
-//        super.init()
-//        handleLocationAlertIfNeeded()
-//    }
-//
-//    func handleLocationAlertIfNeeded() {
-//        if isLocationAlertVisible() {
-//            allowWhileUsingAppAlert.tap()
-//        }
-//    }
-//
-//    func isLocationAlertVisible() -> Bool {
-//        return allowWhileUsingAppAlert.waitForExistence(timeout: 2)
-//    }
+    
     
     public func getCityText() -> String {
         guard  cityText.waitForExistence(timeout: visibleTimeout) else {
@@ -40,12 +30,17 @@ class MainScreen: BaseScreen, SearchProtocol{
         return cityText.label
     }
     
-    public func getDeviceLocationWeather() {
-        guard locationButton.waitForExistence(timeout: visibleTimeout) else {
-            XCTFail("\(locationButton.description) is not visible")
-            return
+    @discardableResult
+    public func getDeviceLocationWeather() -> Self {
+        tap(locationButton)
+        return self
+    }
+    
+    public func getSearchPlaceholderValue() -> String {
+        guard searchField.waitForExistence(timeout: visibleTimeout) else {
+            return "Failed to find search field"
         }
-        locationButton.tap()
+        return searchField.placeholderValue ?? ""
     }
 }
 

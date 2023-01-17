@@ -36,10 +36,27 @@ class ClimaUITests: BaseTest {
     
     func testSearchCityTwoWords() throws {
         let mainScreen = MainScreen()
-        mainScreen.search(text: "Los Gatos")
+        mainScreen.search(text: "New York")
         let city = mainScreen.getCityText()
 
-        XCTAssertEqual(city, "Los Gatos", "Failed to search for Los Gatos weather")        
+        XCTAssertEqual(city, "New York", "Failed to search for New York weather")
+    }
+    
+    func testSearchCityAndCountry() throws {
+        let mainScreen = MainScreen()
+        mainScreen.search(text: "Odessa, US")
+        let city = mainScreen.getCityText()
+
+        XCTAssertEqual(city, "Odessa", "Failed to search for Odessa, US weather")
+    }
+    
+    func testSearchEmptyField() throws {
+        let mainScreen = MainScreen()
+        mainScreen.search(text: "")
+        let placeholderValue = mainScreen.getSearchPlaceholderValue()
+        
+        XCTAssertNotNil(placeholderValue.range(of:"Type something"))
     }
     
 }
+
