@@ -3,7 +3,6 @@
 //  ClimaUITests
 //
 //  Created by Alexandra Tarasova on 1/15/23.
-//  Copyright © 2023 App Brewery. All rights reserved.
 //
 
 import XCTest
@@ -32,12 +31,29 @@ class BaseScreen {
         }
     }
     
+    public func isElementPresent(_ element: XCUIElement) -> Bool {
+        if !element.waitForExistence(timeout: visibleTimeout) {
+            XCTFail("Failed to find City text")
+            return false
+        }
+        return true
+    }
+    
     func tap(_ element: XCUIElement) {
         guard element.waitForExistence(timeout: visibleTimeout) else {
             XCTFail("\(element.description) is not visible")
             return
         }
         element.tap()
+    }
+    
+    func type(_ text: String, element: XCUIElement) {
+        guard element.waitForExistence(timeout: visibleTimeout) else {
+            XCTFail("\(element.description) is not visible")
+            return
+        }
+        element.tap()
+        element.typeText(text)
     }
 }
 

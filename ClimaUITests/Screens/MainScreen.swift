@@ -3,16 +3,16 @@
 //  ClimaUITests
 //
 //  Created by Alexandra Tarasova on 1/15/23.
-//  Copyright © 2023 App Brewery. All rights reserved.
 //
 
 import XCTest
 
 
-class MainScreen: BaseScreen, SearchProtocol{
+class MainScreen: BaseScreen {
     private lazy var cityText: XCUIElement = BaseScreen.app.staticTexts["city"]
     private lazy var locationButton: XCUIElement = BaseScreen.app.buttons["location"]
     private lazy var searchField: XCUIElement = BaseScreen.app.textFields["searchField"]
+    private lazy var searchButton = BaseScreen.app.buttons["search"]
     
     
     override init() {
@@ -21,13 +21,12 @@ class MainScreen: BaseScreen, SearchProtocol{
         visible()
     }
     
-    
-    
     public func getCityText() -> String {
-        guard  cityText.waitForExistence(timeout: visibleTimeout) else {
-            return "Failed to find City text"
+        var city = ""
+        if isElementPresent(cityText) {
+            city = cityText.label
         }
-        return cityText.label
+        return city
     }
     
     @discardableResult
@@ -36,11 +35,27 @@ class MainScreen: BaseScreen, SearchProtocol{
         return self
     }
     
-    public func getSearchPlaceholderValue() -> String {
-        guard searchField.waitForExistence(timeout: visibleTimeout) else {
-            return "Failed to find search field"
+    @discardableResult
+    public func search() -> Self {
+        tap(searchButton)
+        return self
+    }
+    
+    @discardableResult
+    public func typeInSearchFiled(text: String) -> Self {
+        if isElementPresent(searchField){
+            type(text, element: searchField)
         }
-        return searchField.placeholderValue ?? ""
+        return self
+    }
+    
+    
+    public func getSearchPlaceholderValue() -> String {
+        var searchFiledPlaceHoldText = ""
+        if isElementPresent(searchField){
+            searchFiledPlaceHoldText = searchField.placeholderValue ?? ""
+        }
+        return searchFiledPlaceHoldText
     }
 }
 
